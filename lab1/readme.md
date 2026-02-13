@@ -6,16 +6,20 @@ gcc -nostdlib -no-pie print_hello.s -o hello
 
 ## Task 1
 make task1
+
 ./task1
 
 ## Task 2
 make task2
+
 ./task2
 
 ## Task 3
 make task3
+
 ./task3
 
 ## Task 4
 make task4
+
 ./task4
