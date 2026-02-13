@@ -17,7 +17,7 @@ fill_ram:
     movb $0xFF, ram+0x56
     movb $0xFF, ram+0x57
     movb $0xFF, ram+0x58
-
+    
     ret # Return control to C
 
 .section .note.GNU-stack,"",@progbits
