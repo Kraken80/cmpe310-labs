@@ -6,20 +6,25 @@
 
 .section .text
 .globl hamming_distance
+.globl _start
 
 # INPUT: RSI = destination address
-#get_string:
-#    mov $0, %rax     # read
-#    mov $0, %rdi     # from stdin
-#    mov $256, %rdx   # max 256 bytes
-#    syscall
-#    ret
-#mov $str1, %rsi
-#call get_string
-#mov $str2, %rsi
-#call get_string
-#mov $str1, %rsi
-#mov $str2, %rdi
+get_string:
+    mov $0, %rax     # read
+    mov $0, %rdi     # from stdin
+    mov $256, %rdx   # max 256 bytes
+    syscall
+    ret
+
+_start:
+    mov $str1, %rsi
+    call get_string
+    mov $str2, %rsi
+    call get_string
+    mov $str1, %rsi
+    mov $str2, %rdi
+    call hamming_distance
+    ret
 
 # INPUT: NONE
 # OUTPUT: hamming distance of str1 and str2.
