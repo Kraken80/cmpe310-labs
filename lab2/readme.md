@@ -1,5 +1,5 @@
-# Lab 1
+# Lab 2
 ## Compile
-gcc -nostdlib -no-pie task.s -o task
+make
 ## Run
 ./task

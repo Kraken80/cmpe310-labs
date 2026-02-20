@@ -16,14 +16,16 @@ int test(int expected, char *test_name, char* a, char* b)
     else {
         printf("test failed!\n");
     }
-    printf("Compared '%s' with '%s'\n", a, b);
-    printf("Expected %d, Got %d\n", expected, result);
+    printf("(Compared '%s' with '%s'\n", a, b);
+    printf("Expected %d, Got %d)\n", expected, result);
 }
 
 int main()
 {
     test(38, "1", "this is a test", "of the emergency broadcast");
     test(8, "2", "foo", "bar");
-
+    test(0, "length 1", "test", "testing");
+    test(0, "length 2", "testing", "test");
+    
     return 0;
 }
