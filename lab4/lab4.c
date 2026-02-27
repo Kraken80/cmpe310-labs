@@ -30,4 +30,6 @@ int main()
     result = sum(data, data_len);
 
     printf("%d\n",result);
+
+    free(data);
 }

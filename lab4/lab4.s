@@ -1,6 +1,4 @@
 .section .bss
-#.globl location
-#.globl length
 
 .section .text
 .globl sum
