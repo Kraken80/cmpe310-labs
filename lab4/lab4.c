@@ -12,6 +12,7 @@ int main()
 
     int32_t pt;
     int32_t *data;
+    int32_t result;
 
     inf = fopen("data.txt", "r");
 
@@ -24,6 +25,9 @@ int main()
         fscanf(inf, "%d\n", data+i);
     }
 
+    fclose(inf);
 
+    result = sum(data, data_len);
 
+    printf("%d\n",result);
 }

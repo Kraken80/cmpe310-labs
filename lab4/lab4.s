@@ -13,7 +13,9 @@ sum:
     mov %rsi, %rcx
 sum_loop:
     add (%rdi), %eax
-    add $4, rdi
+    add $4, %rdi
     loop sum_loop
 
     ret
+
+.section .note.GNU-stack,"",@progbits
