@@ -14,4 +14,3 @@ syscall
 mov $60, %rax # exit
 mov $0, %rdi # status
 syscall
-
