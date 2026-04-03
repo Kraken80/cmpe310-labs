@@ -4,7 +4,7 @@
 
 #INPUTS:
 # ax = selects what character to display
-# bx = selects which segment to use (letters 0-7)
+# bx = selects which segment display to use (letters 0-7)
 # where 0 is the rightmost seg and 7 the leftmost.
 #DESTROYS: none
 display_letter:
@@ -12,6 +12,7 @@ display_letter:
     push %cx
     push %dx
 
+	# port A = 1 << %bx
     mov %bx, %cx
     mov $1, %bx
     shl %cl, %bx
@@ -21,11 +22,14 @@ display_letter:
     mov %bx, %ax
     out %al, %dx
 
+	# port b = %ax
     mov %cx, %ax
     # dx = port B (individual segment control)
     mov $0x641, %dx
     out %al, %dx
 
+	incw %bx
+	
     pop %dx
     pop %cx
     ret
@@ -58,6 +62,9 @@ _start:
 
     # cx = 'SHE' base (located at the letter E)
     mov $0, %cx
+    
+    # scroll direction = 1
+    movw $1, (%rbp)
 
 loop:
     # ax = Letter 'E'
@@ -66,11 +73,9 @@ loop:
     call display_letter
     # ax = Letter 'H'
     mov $0b01110110, %ax
-    incw %bx
     call display_letter
     # ax = Letter 'S'
     mov $0b01101101, %ax
-    incw %bx
     call display_letter
 
     # if scrolling positive, check for end of text > size of display
@@ -95,7 +100,7 @@ switch_direction:
     addw (%rbp), %cx
     jmp loop
 
-    # exit(0)
+    # exit(0) (won't be reached.)
     mov $60, %rax # exit
     mov $0, %rdi # status
     syscall
